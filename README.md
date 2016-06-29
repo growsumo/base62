@@ -2,4 +2,4 @@
 golang base62 Encoding
 
 Test the code
-`λ go test`
+`λ go test *_test.go`
