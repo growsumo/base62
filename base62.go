@@ -40,15 +40,15 @@ func Encode(num int) []byte {
 }
 
 // Decode a Base62 token to its original positive integer
-func Decode(str []byte) int {
+func Decode(token []byte) int {
 	// calculate base (should be 62)
-	strlen := len(str)
+	tokenlen := len(token)
 	num := 0
 	idx := 0
 	// until num is == 0
-	for _, c := range str {
+	for _, c := range token {
 		// calculate remainder
-		power := (strlen - (idx + 1))
+		power := (tokenlen - (idx + 1))
 		// calculate quotient
 		index := bytes.IndexByte(balphabet, c)
 		num += index * int(math.Pow(float64(base), float64(power)))
