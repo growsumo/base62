@@ -20,7 +20,6 @@ func Encode(num int) []byte {
 	var res []byte
 	// remainder of modulo
 	var rem int
-	// calculate base (should be 62)
 
 	// until num is == 0
 	for num != 0 {
@@ -51,7 +50,9 @@ func Decode(token []byte) int {
 		power := (tokenlen - (idx + 1))
 		// calculate quotient
 		index := bytes.IndexByte(balphabet, c)
+		// sum num and decode algo
 		num += index * int(math.Pow(float64(base), float64(power)))
+		// increment index token
 		idx++
 	}
 
