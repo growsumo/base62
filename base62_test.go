@@ -6,12 +6,13 @@ import (
 	"testing"
 )
 
-var cases = map[int][]byte{
-	0:          []byte("0"),
-	1:          []byte("1"),
-	100:        []byte("1C"),
-	999:        []byte("g7"),
-	9999999999: []byte("aUKYOz"),
+var cases = map[uint][]byte{
+	0:                    []byte("0"),
+	1:                    []byte("1"),
+	100:                  []byte("1C"),
+	999:                  []byte("g7"),
+	9999999999:           []byte("aUKYOz"),
+	13518126808285626735: []byte("g6Babbcj0sv"),
 }
 
 func TestEncode(t *testing.T) {
