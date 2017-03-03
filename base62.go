@@ -7,19 +7,19 @@ import (
 
 // BASE62 should always be 0-9,a-z,A-Z
 const alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-const base = len(alphabet)
+const base = uint(len(alphabet))
 
 var balphabet = []byte(alphabet)
 
 // Encode a positive integer to a Base62 token
-func Encode(num int) []byte {
+func Encode(num uint) []byte {
 	if num == 0 {
 		return []byte{alphabet[0]}
 	}
 	// result byte arr
 	var res []byte
 	// remainder of modulo
-	var rem int
+	var rem uint
 
 	// until num is == 0
 	for num != 0 {
@@ -39,19 +39,19 @@ func Encode(num int) []byte {
 }
 
 // Decode a Base62 token to its original positive integer
-func Decode(token []byte) int {
+func Decode(token []byte) uint {
 	// calculate base (should be 62)
 	tokenlen := len(token)
-	num := 0
+	num := uint(0)
 	idx := 0
 	// until num is == 0
 	for _, c := range token {
 		// calculate remainder
 		power := (tokenlen - (idx + 1))
 		// calculate quotient
-		index := bytes.IndexByte(balphabet, c)
+		index := uint(bytes.IndexByte(balphabet, c))
 		// sum num and decode algo
-		num += index * int(math.Pow(float64(base), float64(power)))
+		num += index * uint(math.Pow(float64(base), float64(power)))
 		// increment index token
 		idx++
 	}
